@@ -3,11 +3,11 @@ require_once 'tools.php';
 ?>
 <html>
 <head>
-    <title>Test page</title>
+    <title>Itinerary App - Home</title>
 </head>
 <body>
-    <p>Hello World!!</p>
-    <br/>
+    <h1>Itinerary App</h1>
     <p><a href='login.php'>Login</a></p>
+    <p><a href='register.php'>Register</a></p>
 </body>
 </html>

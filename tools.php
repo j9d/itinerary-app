@@ -12,4 +12,6 @@ $sdk = new Sdk([
     'region' => 'ap-southeast-2'
 ]);
 
+$REGISTER_URL = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
+
 ?>
