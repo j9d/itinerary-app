@@ -1,0 +1,7 @@
+{
+    "name": "j9d/itinerary-site",
+    "description": "Website code for the Itinerary App for CC Assignment 3",
+    "require": {
+        "aws/aws-sdk-php": "^3.183"
+    }
+}
