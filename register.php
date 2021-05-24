@@ -15,14 +15,15 @@ function register_user($email, $username, $password) {
         'Payload' => json_encode($body)
     ]);
 
-    $result_code = $result['Payload']['statusCode'];
-    if ($result_code == 409) {
-        echo 'User already exists</br>';
-    } else if ($result_code == 201) {
-        echo 'Created<br>';
-    } else {
-        echo 'Missing attributes: ' . $result['Payload']['body'];
-    }
+    echo '<pre>'; print_r($result); echo '</pre>';
+    // $result_code = $result['Payload'];
+    // if ($result_code == 409) {
+    //     echo 'User already exists</br>';
+    // } else if ($result_code == 201) {
+    //     echo 'Created<br>';
+    // } else {
+    //     echo 'Missing attributes: ' . $result['Payload']['body'];
+    // }
 }
 
 ?>
