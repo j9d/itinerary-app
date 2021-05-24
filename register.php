@@ -49,11 +49,11 @@ function register_user($email, $username, $password) {
         <br/>
 
         <h3>Username</h3>
-        <input type="text" name="username" required>
+        <input type="text" name="username">
         <br/>
 
         <h3>Password</h3>
-        <input type="password" name="password" required>
+        <input type="password" name="password">
         <br/>
 
         <input type="submit" value="Register" name="submit">
