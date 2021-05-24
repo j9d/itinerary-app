@@ -2,7 +2,7 @@
 require_once 'tools.php';
 
 function register_user($email, $username, $password) {
-    global $REGISTER_URL;
+    global $lambda_client, $REGISTER_URL;
 
     $body = [
         'email' => $email,
@@ -10,20 +10,30 @@ function register_user($email, $username, $password) {
         'password' => $password
     ];
 
-    $request = [
-        'http' => [
-            'header' => 'Content-type: application/json',
-            'method' => 'POST',
-            'body' => http_build_query($body)
-        ]
-    ];
+    // $request = [
+    //     'http' => [
+    //         'header' => 'Content-type: application/json',
+    //         'method' => 'POST',
+    //         'body' => http_build_query($body)
+    //     ]
+    // ];
     
-    $context = stream_context_create($request);
-    $result = file_get_contents($REGISTER_URL, false, $context);
-    if ($result === false) {
-        echo 'Error making request';
+    // $context = stream_context_create($request);
+    // $result = file_get_contents($REGISTER_URL, false, $context);
+
+    $result = $lambda_client->invoke([
+        'FunctionName' => 'register-user',
+        'Payload' => json_encode($body)
+    ]);
+
+    $result_code = $result['StatusCode'];
+    if ($result_code == 409) {
+        echo 'User already exists</br>';
+    } else if ($result_code == 201) {
+        echo 'Created<br>';
+    } else {
+        echo 'Missing attributes: ' . $result['Payload'];
     }
-    var_dump($result);
 }
 
 ?>
