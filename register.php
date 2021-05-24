@@ -15,7 +15,7 @@ function register_user($email, $username, $password) {
         'Payload' => json_encode($body)
     ]);
 
-    echo '<pre>'; print_r($result); echo '</pre>';
+    echo '<pre>'; print_r($result['Payload']->__toString()); echo '</pre>';
     // $result_code = $result['Payload'];
     // if ($result_code == 409) {
     //     echo 'User already exists</br>';
