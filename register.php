@@ -15,7 +15,7 @@ function register_user($email, $username, $password) {
         'Payload' => json_encode($body)
     ]);
 
-    echo '<pre>'; print_r($result['Payload']->__toString()); echo '</pre>';
+    // echo '<pre>'; print_r($result['Payload']->__toString()); echo '</pre>';
     $result_arr = json_decode($result['Payload']->__toString());
     $statusCode = $result_arr['statusCode'];
     $message = $result_arr['body'];
