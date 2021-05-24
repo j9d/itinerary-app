@@ -14,7 +14,7 @@ function register_user($email, $username, $password) {
         'http' => [
             'header' => 'Content-type: application/json',
             'method' => 'POST',
-            'content' => http_build_query($body)
+            'body' => http_build_query($body)
         ]
     ];
     
@@ -40,7 +40,7 @@ function register_user($email, $username, $password) {
     ?>
     <form name="register-form" method="post" action="register.php">
         <h3>Email</h3>
-        <input type="text" name="email">
+        <input type="email" name="email">
         <br/>
 
         <h3>Username</h3>
