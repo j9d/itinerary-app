@@ -16,17 +16,19 @@ function register_user($email, $username, $password) {
     ]);
 
     // echo '<pre>'; print_r($result['Payload']->__toString()); echo '</pre>';
-    $result_arr = json_decode($result['Payload']->__toString());
-    $statusCode = $result_arr['statusCode'];
-    $message = $result_arr['body'];
 
-    if ($statusCode == 409) {
-        echo 'User already exists</br>';
-    } else if ($statusCode == 201) {
-        echo 'Created<br>';
-    } else {
-        echo 'Missing attributes: ' . $message;
-    }
+    echo gettype($result['Payload']->__toString());
+    // $result_arr = json_decode($result['Payload']->__toString());
+    // $statusCode = $result_arr['statusCode'];
+    // $message = $result_arr['body'];
+
+    // if ($statusCode == 409) {
+    //     echo 'User already exists</br>';
+    // } else if ($statusCode == 201) {
+    //     echo 'Created<br>';
+    // } else {
+    //     echo 'Missing attributes: ' . $message;
+    // }
 }
 
 ?>
