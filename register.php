@@ -20,11 +20,13 @@ function register_user($email, $username, $password) {
     
     // $context = stream_context_create($request);
     // $result = file_get_contents($REGISTER_URL, false, $context);
-
+    echo 'Invoking ... <br>';
     $result = $lambda_client->invoke([
         'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
         'Payload' => json_encode($body)
     ]);
+
+    echo 'Invoked. <br>';
 
     $result_code = $result['StatusCode'];
     if ($result_code == 409) {
