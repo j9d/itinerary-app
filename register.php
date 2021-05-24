@@ -22,7 +22,7 @@ function register_user($email, $username, $password) {
     // $result = file_get_contents($REGISTER_URL, false, $context);
 
     $result = $lambda_client->invoke([
-        'FunctionName' => 'register-user',
+        'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
         'Payload' => json_encode($body)
     ]);
 
