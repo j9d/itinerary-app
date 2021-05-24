@@ -21,7 +21,7 @@ function register_user($email, $username, $password) {
     } else if ($result_code == 201) {
         echo 'Created<br>';
     } else {
-        echo 'Missing attributes: ' . $result['Payload'];
+        echo 'Missing attributes: ' . $result['Payload']['body'];
     }
 }
 
