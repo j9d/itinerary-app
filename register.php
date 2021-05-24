@@ -10,25 +10,12 @@ function register_user($email, $username, $password) {
         'password' => $password
     ];
 
-    // $request = [
-    //     'http' => [
-    //         'header' => 'Content-type: application/json',
-    //         'method' => 'POST',
-    //         'body' => http_build_query($body)
-    //     ]
-    // ];
-    
-    // $context = stream_context_create($request);
-    // $result = file_get_contents($REGISTER_URL, false, $context);
-    echo 'Invoking ... <br>';
     $result = $lambda_client->invoke([
         'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
         'Payload' => json_encode($body)
     ]);
 
-    echo 'Invoked. <br>';
-
-    $result_code = $result['StatusCode'];
+    $result_code = $result['Payload']['statusCode'];
     if ($result_code == 409) {
         echo 'User already exists</br>';
     } else if ($result_code == 201) {
