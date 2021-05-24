@@ -13,7 +13,28 @@ $sdk = new Sdk([
 ]);
 
 $lambda_client = $sdk->createLambda();
+$db_client = $sdk->createDynamoDb();
+$s3_client = $sdk->createS3();
 
-$REGISTER_URL = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
+function redirect($page) {
+    echo "<script> location.href=\"" . $page . "\" </script>";
+}
+
+function query_login_table($email) {
+    global $db_client;
+
+    $key = [
+        'email' => [
+            'S' => $email
+        ]
+    ];
+    $params = [
+        'TableName' => 'users',
+        'Key' => $key
+    ];
+
+    $result = $db_client->getItem($params);
+    return $result;
+}
 
 ?>

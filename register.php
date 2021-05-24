@@ -2,7 +2,7 @@
 require_once 'tools.php';
 
 function register_user($email, $username, $password) {
-    global $lambda_client, $REGISTER_URL;
+    global $lambda_client;
 
     $body = [
         'email' => $email,
