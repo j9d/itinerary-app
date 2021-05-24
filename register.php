@@ -15,19 +15,18 @@ function register_user($email, $username, $password) {
         'Payload' => json_encode($body)
     ]);
 
-    // echo '<pre>'; print_r($result['Payload']->__toString()); echo '</pre>';
-
-    // echo gettype($result['Payload']->__toString());
     $result_arr = json_decode($result['Payload']->__toString(), true);
     $statusCode = $result_arr['statusCode'];
     $message = $result_arr['body'];
 
     if ($statusCode == 409) {
-        echo 'User already exists</br>';
+        echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
     } else if ($statusCode == 201) {
         echo 'Created<br>';
+    } else if ($statusCode == 400) {
+        echo $message . '<br>';
     } else {
-        echo 'Missing attributes: ' . $message;
+        echo 'Uncaught error<br>';
     }
 
 }
