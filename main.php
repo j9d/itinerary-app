@@ -14,5 +14,9 @@ if (!isset($_SESSION['current_email'])) {
 <body>
     <h1>Main Page</h1>
     <p>Welcome, <?= $_SESSION['current_user'] ?>! (<a href='logout.php'>logout</a>)</p>
+
+    <br>
+    <p>View your <a href='user.php'>past itineraries</a>.</p>
+    <p>Create a <a href='new_itinerary.php'>new itinerary</a>.</p>
 </body>
 </html>
