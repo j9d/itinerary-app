@@ -25,6 +25,32 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
 <html>
     <head>
         <title>Create New Itinerary</title>
+        <script type='text/javascript'>
+            function addFields() {
+                // Number of destinations to create
+                var number = document.getElementById('numlocations').value;
+                // Container <div> where the location selections will be displayed
+                var container = document.getElementById('container');
+                // Clear previous contents of the container
+                while (container.hasChildNodes()) {
+                    container.removeChild(container.lastChild);
+                }
+                for (i = 0; i < number; i++) {
+                    container.appendChild(document.createElement('hr'));
+
+                    // Clone the selector for the origin location
+                    let clone = document.querySelector('#origin').cloneNode(true);
+                    clone.id = 'destination' + i;
+                    clone.name = 'destination' + i;
+
+                    container.appendChild(document.createTextNode('Destination ' + (i + 1)));
+                    // Add the cloned element to the container
+                    container.appendChild(clone);
+                    
+                    container.appendChild(document.createElement('br'));
+                }
+            }
+        </script>
     </head>
     <body>
         <h1>New Itinerary</h1>
@@ -38,15 +64,18 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
                     $countryname = $c['country'];
 
                     if ($cityname == 'Melbourne') {
-                        echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>\n'; 
+                        echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>'; 
                     } else {
-                        echo '<option value=' . $cityname . '>' . $cityname . ', ' . $countryname . '</option>\n';
+                        echo '<option value=' . $cityname . '>' . $cityname . ', ' . $countryname . '</option>';
                     }
                 }
-                
                 ?>
             </select>
         
+            <p>How many locations are you travelling to?</p>
+            <input type='text' id='numlocations' name='numlocations' value=''/>
+            <a href='#' id='addfields' onclick='addFields()'>Confirm</a>
+            <div id='container'></div>
         </form>
         
     </body>
