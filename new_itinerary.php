@@ -49,7 +49,7 @@ array_multisort(
                     container.appendChild(clone);
 
                     // Create a date selector for each destination
-                    let date = document.createElement(input);
+                    let date = document.createElement('input');
                     date.type = 'date';
                     date.id = 'date' + i;
                     date.name = 'date' + i;
