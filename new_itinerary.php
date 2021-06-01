@@ -3,7 +3,7 @@ require_once 'tools.php';
 
 $cities = get_all_locations();
 
-print('<pre>' . print_r($cities['Item']) . '</pre>');
+print('<pre>' . print_r($cities) . '</pre>');
 ?>
 
 <html>
