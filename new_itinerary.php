@@ -4,7 +4,7 @@ require_once 'tools.php';
 $cities = get_all_locations();
 
 $cities_unmarshalled = [];
-foreach ($cities as $i) {
+foreach ($cities['Items'] as $i) {
     $cities_unmarshalled[$i['city']['S']] = [
         'city' => $i['city']['S'],
         'country' => $i['country']['S'],
