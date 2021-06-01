@@ -3,7 +3,25 @@ require_once 'tools.php';
 
 $cities = get_all_locations();
 
-print('<pre>' . print_r($cities['Items']) . '</pre>');
+$cities_unmarshalled = [];
+foreach ($cities as $i) {
+    $cities_unmarshalled[$i['city']['S']] = [
+        'city' => $i['city']['S'],
+        'country' => $i['country']['S'],
+        'continent' => $i['continent']['S'],
+        'acceptsGround' => $i['acceptsGround']['BOOL']
+    ];
+}
+
+$continent_col = array_column($cities_unmarshalled, 'continent');
+$city_col = array_column($cities_unmarshalled, 'city');
+array_multisort(
+    $continent_col, SORT_ASC,
+    $city_col, SORT_ASC,
+    $cities_unmarshalled
+);
+
+print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
 ?>
 
 <html>
@@ -13,6 +31,25 @@ print('<pre>' . print_r($cities['Items']) . '</pre>');
     <body>
         <h1>New Itinerary</h1>
         <hr/>
-        <p>Where are you travelling from?</p>
+        <form>
+            <p>Where are you travelling from?</p>
+            <select name='origin' id='origin'>
+                <?php 
+                foreach ($cities_unmarshalled as $c) {
+                    $cityname = $c['city']['S'];
+                    $countryname = $c['country']['S'];
+
+                    if ($cityname == 'Melbourne') {
+                        echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>'; 
+                    } else {
+                        echo '<option value=' . $cityname . '>' . $cityname . ', ' . $countryname . '</option>';
+                    }
+                }
+                
+                ?>
+            </select>
+        
+        </form>
+        
     </body>
 </html>
