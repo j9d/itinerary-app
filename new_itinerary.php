@@ -19,7 +19,7 @@ array_multisort(
     $cities_unmarshalled
 );
 
-print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
+// print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
 ?>
 
 <html>
@@ -44,8 +44,22 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
                     clone.name = 'destination' + i;
 
                     container.appendChild(document.createTextNode('Destination ' + (i + 1)));
+                    container.appendChild(document.createElement('br'));
                     // Add the cloned element to the container
                     container.appendChild(clone);
+
+                    // Create a date selector for each destination
+                    let date = document.createElement(input);
+                    date.type = 'date';
+                    date.id = 'date' + i;
+                    date.name = 'date' + i;
+                    date.value = <?= date('Y-m-d') ?>;
+                    date.min = <?= date('Y-m-d') ?>;
+
+                    // Add date selector
+                    container.appendChild(document.createTextNode('Date of departure from this destination:'));
+                    container.appendChild(document.createElement('br'));
+                    container.appendChild(date);
                     
                     container.appendChild(document.createElement('br'));
                 }
@@ -71,6 +85,9 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
                 }
                 ?>
             </select>
+
+            <p>When are you leaving?</p>
+            <input type="date" id="origin-date" name="origin-date" value=<?= date('Y-m-d') ?> min=<?= date('Y-m-d') ?>>
         
             <p>How many locations are you travelling to?</p>
             <input type='text' id='numlocations' name='numlocations' value=''/>
