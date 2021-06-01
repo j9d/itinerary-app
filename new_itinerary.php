@@ -36,8 +36,8 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
             <select name='origin' id='origin'>
                 <?php 
                 foreach ($cities_unmarshalled as $c) {
-                    $cityname = $c['city']['S'];
-                    $countryname = $c['country']['S'];
+                    $cityname = $c['city'];
+                    $countryname = $c['country'];
 
                     if ($cityname == 'Melbourne') {
                         echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>'; 
