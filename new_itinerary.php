@@ -13,10 +13,8 @@ foreach ($cities['Items'] as $i) {
     ];
 }
 
-$continent_col = array_column($cities_unmarshalled, 'continent');
 $city_col = array_column($cities_unmarshalled, 'city');
 array_multisort(
-    $continent_col, SORT_ASC,
     $city_col, SORT_ASC,
     $cities_unmarshalled
 );
@@ -40,9 +38,9 @@ print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
                     $countryname = $c['country'];
 
                     if ($cityname == 'Melbourne') {
-                        echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>'; 
+                        echo '<option value=' . $cityname . ' selected>Melbourne, Australia</option>\n'; 
                     } else {
-                        echo '<option value=' . $cityname . '>' . $cityname . ', ' . $countryname . '</option>';
+                        echo '<option value=' . $cityname . '>' . $cityname . ', ' . $countryname . '</option>\n';
                     }
                 }
                 
