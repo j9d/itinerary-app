@@ -1,8 +1,10 @@
 <?php
 require_once 'tools.php';
 
+// Retrieve all cities from DynamoDB
 $cities = get_all_locations();
 
+// Unmarshall into a normal array from that godforsaken DynamoDB format
 $cities_unmarshalled = [];
 foreach ($cities['Items'] as $i) {
     $cities_unmarshalled[$i['city']['S']] = [
@@ -13,25 +15,27 @@ foreach ($cities['Items'] as $i) {
     ];
 }
 
+// Sort by city name
 $city_col = array_column($cities_unmarshalled, 'city');
 array_multisort(
     $city_col, SORT_ASC,
     $cities_unmarshalled
 );
-
-// print('<pre>' . print_r($cities_unmarshalled) . '</pre>');
 ?>
 
 <html>
     <head>
         <title>Create New Itinerary</title>
         <script type='text/javascript'>
+            // Function for adding destination selection fields to the form
             function addFields() {
                 // Number of destinations to create
                 var number = document.getElementById('numlocations').value;
+
                 // Container <div> where the location selections will be displayed
                 var container = document.getElementById('container');
-                // Clear previous contents of the container
+
+                // Clear previous contents of the container - allows changing of the number of destinations
                 while (container.hasChildNodes()) {
                     container.removeChild(container.lastChild);
                 }
@@ -47,6 +51,7 @@ array_multisort(
                     container.appendChild(document.createElement('br'));
                     // Add the cloned element to the container
                     container.appendChild(clone);
+                    container.appendChild(document.createElement('br'));
 
                     // Create a date selector for each destination
                     let date = document.createElement('input');
@@ -69,7 +74,7 @@ array_multisort(
     <body>
         <h1>New Itinerary</h1>
         <hr/>
-        <form>
+        <form action='postprocessing.php' method='post'>
             <p>Where are you travelling from?</p>
             <select name='origin' id='origin'>
                 <?php 
@@ -87,12 +92,15 @@ array_multisort(
             </select>
 
             <p>When are you leaving?</p>
-            <input type="date" id="origin-date" name="origin-date" value=<?= date('Y-m-d') ?> min=<?= date('Y-m-d') ?>>
+            <input type='date' id='origin-date' name='origin-date' value=<?= date('Y-m-d') ?> min=<?= date('Y-m-d') ?>>
         
             <p>How many locations are you travelling to?</p>
             <input type='text' id='numlocations' name='numlocations' value=''/>
             <a href='#' id='addfields' onclick='addFields()'>Confirm</a>
             <div id='container'></div>
+
+            <br/>
+            <input type='submit' value='Save' name='submit'>
         </form>
         
     </body>
