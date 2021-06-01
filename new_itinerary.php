@@ -1,5 +1,9 @@
 <?php
 require_once 'tools.php';
+
+$cities = get_all_locations();
+
+print_r($cities);
 ?>
 
 <html>
@@ -7,6 +11,8 @@ require_once 'tools.php';
         <title>Create New Itinerary</title>
     </head>
     <body>
-        <p>New Itinerary</p>
+        <h1>New Itinerary</h1>
+        <hr/>
+        <p>Where are you travelling from?</p>
     </body>
 </html>

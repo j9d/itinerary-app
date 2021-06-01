@@ -37,4 +37,14 @@ function query_login_table($email) {
     return $result;
 }
 
+function get_all_locations() {
+    global $db_client;
+
+    $cities = $db_client->scan([
+        'TableName' => 'locations'
+    ]);
+
+    return $cities;
+}
+
 ?>
