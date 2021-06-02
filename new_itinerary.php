@@ -64,7 +64,9 @@ array_multisort(
                         date.name = 'date' + i;
                         date.value = <?= date('Y-m-d') ?>;
                         date.min = <?= date('Y-m-d') ?>;
-                        date.onchange = updateMinDates('date' + i);
+                        date.onchange = function update() {
+                            updateMinDates('date' + i);
+                        }
 
                         // Add date selector
                         container.appendChild(document.createTextNode('Date of departure from this destination:'));
