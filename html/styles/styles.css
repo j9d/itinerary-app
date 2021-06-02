@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+}
+
+#main-title {
+    background-color: #0063B2FF;
+}
+
+#navigation-bar {
+    background-color: rgb(34, 135, 218);
+    padding: 0;
+    margin: 0;
+}
+
+#title {
+    color: white;
+    font-family: "Comic Sans MS";
+}
+
+#lr-btn {
+    color: white;
+    font-family: Garamond;
+    font-size: large;
+    font-size: 30px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: 0063B2FF;
+    color: white;
+}
