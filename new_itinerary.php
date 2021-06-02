@@ -110,9 +110,9 @@ array_multisort(
                     $combinedname = $cityname . '^' . $countryname;
 
                     if ($cityname == 'Melbourne') {
-                        echo '<option value=' . $combinedname . ' selected>Melbourne, Australia</option>'; 
+                        echo '<option value="' . $combinedname . '" selected>Melbourne, Australia</option>'; 
                     } else {
-                        echo '<option value=' . $combinedname . '>' . $combinedname . '</option>';
+                        echo '<option value="' . $combinedname . '">' . $cityname . ', ' . $countryname . '</option>';
                     }
                 }
                 ?>
