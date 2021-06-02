@@ -10,6 +10,7 @@
 
 #title {
     color: white;
+    font-size: 40px;
     font-family: "Comic Sans MS";
 }
 
@@ -17,7 +18,7 @@
     color: white;
     font-family: Garamond;
     font-size: large;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #login {
@@ -32,4 +33,11 @@
     width: 100%;
     background-color: #0063B2FF;
     color: white;
+}
+
+#nav-links {
+    color: white;
+    font-family: Garamond;
+    font-size: large;
+    font-size: 25px;
 }
