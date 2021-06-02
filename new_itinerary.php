@@ -97,6 +97,7 @@ array_multisort(
             }
         </script>
     </head>
+    
     <body>
         <h1>New Itinerary</h1>
         <hr/>
