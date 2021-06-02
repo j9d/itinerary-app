@@ -115,7 +115,7 @@ array_multisort(
             </select>
 
             <p>When are you leaving?</p>
-            <input type='date' id='date0' name='date0' value='<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinValue()'>
+            <input type='date' id='date0' name='date0' value='<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinDates()'>
         
             <p>How many locations are you travelling to?</p>
             <input type='text' id='numlocations' name='numlocations' value=''/>
