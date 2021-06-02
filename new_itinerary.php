@@ -32,41 +32,57 @@ array_multisort(
                 // Number of destinations to create
                 var number = document.getElementById('numlocations').value;
 
-                // Container <div> where the location selections will be displayed
-                var container = document.getElementById('container');
+                if (number > 20) {
+                    alert('Too many destinations. Please choose 20 or less.');
 
-                // Clear previous contents of the container - allows changing of the number of destinations
-                while (container.hasChildNodes()) {
-                    container.removeChild(container.lastChild);
+                } else {
+                    // Container <div> where the location selections will be displayed
+                    var container = document.getElementById('container');
+
+                    // Clear previous contents of the container - allows changing of the number of destinations
+                    while (container.hasChildNodes()) {
+                        container.removeChild(container.lastChild);
+                    }
+                    for (i = 1; i < number + 1; ++i) {
+                        container.appendChild(document.createElement('hr'));
+
+                        // Clone the selector for the origin location
+                        let clone = document.querySelector('#origin').cloneNode(true);
+                        clone.id = 'destination' + i;
+                        clone.name = 'destination' + i;
+
+                        container.appendChild(document.createTextNode('Destination ' + i));
+                        container.appendChild(document.createElement('br'));
+                        // Add the cloned element to the container
+                        container.appendChild(clone);
+                        container.appendChild(document.createElement('br'));
+
+                        // Create a date selector for each destination
+                        let date = document.createElement('input');
+                        date.type = 'date';
+                        date.id = 'date' + i;
+                        date.name = 'date' + i;
+                        date.value = <?= date('Y-m-d') ?>;
+                        date.min = <?= date('Y-m-d') ?>;
+                        date.onchange = updateMinDates('date' + i);
+
+                        // Add date selector
+                        container.appendChild(document.createTextNode('Date of departure from this destination:'));
+                        container.appendChild(document.createElement('br'));
+                        container.appendChild(date);
+                        
+                        container.appendChild(document.createElement('br'));
+                    }
                 }
-                for (i = 0; i < number; i++) {
-                    container.appendChild(document.createElement('hr'));
+            }
 
-                    // Clone the selector for the origin location
-                    let clone = document.querySelector('#origin').cloneNode(true);
-                    clone.id = 'destination' + i;
-                    clone.name = 'destination' + i;
+            function updateMinDates(id) {
+                num = parseInt(id.trim('date'), 10);
+                new_min = document.getElementById('date' + num).value;
 
-                    container.appendChild(document.createTextNode('Destination ' + (i + 1)));
-                    container.appendChild(document.createElement('br'));
-                    // Add the cloned element to the container
-                    container.appendChild(clone);
-                    container.appendChild(document.createElement('br'));
-
-                    // Create a date selector for each destination
-                    let date = document.createElement('input');
-                    date.type = 'date';
-                    date.id = 'date' + i;
-                    date.name = 'date' + i;
-                    date.value = <?= date('Y-m-d') ?>;
-                    date.min = <?= date('Y-m-d') ?>;
-
-                    // Add date selector
-                    container.appendChild(document.createTextNode('Date of departure from this destination:'));
-                    container.appendChild(document.createElement('br'));
-                    container.appendChild(date);
-                    
-                    container.appendChild(document.createElement('br'));
+                for (i = num + 1; i <= 20; ++i) {
+                    dateselector = document.getElementById('date' + i);
+                    dateselector.min = new_min;
                 }
             }
         </script>
