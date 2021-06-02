@@ -43,7 +43,7 @@ array_multisort(
                     while (container.hasChildNodes()) {
                         container.removeChild(container.lastChild);
                     }
-                    for (i = 1; i < number + 1; ++i) {
+                    for (let i = 1; i < number + 1; ++i) {
                         container.appendChild(document.createElement('hr'));
 
                         // Clone the selector for the origin location
@@ -79,11 +79,11 @@ array_multisort(
             function updateMinDates(event) {
                 id = event.target.id;
                 console.log(id);
-                num = parseInt(id.trim('date'), 10);
-                new_min = document.getElementById('date' + num).value;
+                var num = parseInt(id.replace('date', ''), 10);
+                var new_min = document.getElementById('date' + num).value;
 
-                for (i = num + 1; i <= 20; ++i) {
-                    dateselector = document.getElementById('date' + i);
+                for (let i = num + 1; i <= 20; ++i) {
+                    var dateselector = document.getElementById('date' + i);
                     dateselector.min = new_min;
                 }
             }
