@@ -30,20 +30,20 @@ array_multisort(
             // Function for adding destination selection fields to the form
             function addFields() {
                 // Number of destinations to create
-                var number = document.getElementById('numlocations').value;
+                let number = document.getElementById('numlocations').value;
 
                 if (number > 20) {
                     alert('Too many destinations. Please choose 20 or less.');
 
                 } else {
                     // Container <div> where the location selections will be displayed
-                    var container = document.getElementById('container');
+                    let container = document.getElementById('container');
 
                     // Clear previous contents of the container - allows changing of the number of destinations
                     while (container.hasChildNodes()) {
                         container.removeChild(container.lastChild);
                     }
-                    for (let i = 1; i < number + 1; ++i) {
+                    for (let i = 1; i <= number; i++) {
                         container.appendChild(document.createElement('hr'));
 
                         // Clone the selector for the origin location
@@ -82,15 +82,14 @@ array_multisort(
 
             function updateMinDates(item) {
                 id = item.id;
-                console.log(id);
-                var num = parseInt(id.replace('date', ''), 10);
-                var new_min = document.getElementById('date' + num).value;
+                let num = parseInt(id.replace('date', ''), 10);
+                let new_min = document.getElementById('date' + num).value;
 
-                for (let i = num + 1; i <= 20; ++i) {
-                    var dateselector = document.getElementById('date' + i);
+                for (let i = num + 1; i <= 20; i++) {
+                    let dateselector = document.getElementById('date' + i);
                     dateselector.min = new_min;
-                    var current_val = new Date(dateselector.value);
-                    var new_min_date = new Date(new_min);
+                    let current_val = new Date(dateselector.value);
+                    let new_min_date = new Date(new_min);
                     if (current_val < new_min_date) {
                         dateselector.value = new_min;
                     }
