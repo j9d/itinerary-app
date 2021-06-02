@@ -1,7 +1,3 @@
-html, body {
-    height: 100%;
-}
-
 #main-title {
     background-color: #0063B2FF;
 }
@@ -24,11 +20,16 @@ html, body {
     font-size: 30px;
 }
 
-.footer {
+#login {
+    padding: 0;
+    margin: 0;
+}
+
+#footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: 0063B2FF;
+    background-color: #0063B2FF;
     color: white;
 }
