@@ -4,10 +4,10 @@ require_once 'tools.php';
 use Aws\DynamoDb\Exception\DynamoDbException;
 
 if (!isset($_SESSION['current_email']) || !isset($_POST['submit'])) {
-    redirect('login.php');
+    redirect('main.php');
 }
 
-// Postprocessing for saving an itinerary to the database
+// Get the current user from the database
 $user = query_login_table($_SESSION['current_email']);
 $itineraries = $user['Item']['itineraries']['L'];
 if (!$itineraries) {
@@ -15,7 +15,7 @@ if (!$itineraries) {
 }
 $numlocations = $_POST['numlocations'];
 
-print_r($_POST);
+// Create a new itinerary list
 $origin = explode('^', $_POST['origin']);
 $itinerary = ['L' => [
     ['M' => [
@@ -25,6 +25,7 @@ $itinerary = ['L' => [
     ]]
 ]];
 
+// Add each location to the itinerary
 for ($i = 1; $i <= $numlocations; $i++) {
     $locationname = explode('^', $_POST['destination' . $i]);
     $itinerary_destination = ['M' => [
@@ -36,6 +37,7 @@ for ($i = 1; $i <= $numlocations; $i++) {
 }
 $itineraries[] = $itinerary;
 
+// Save updated user with itinerary list to the database
 $key = [
     'email' => ['S' => $user['Item']['email']['S']]
 ];
@@ -50,8 +52,7 @@ $params = [
 
 try {
     $result = $db_client->updateItem($params);
-    // redirect('main.php');
-    echo 'Success!';
+    redirect('main.php');
 
 } catch (DynamoDbException $e) {
     echo 'Error: ' . $e->getMessage() . '<br/>';
