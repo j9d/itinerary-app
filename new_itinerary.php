@@ -107,7 +107,7 @@ array_multisort(
                 foreach ($cities_unmarshalled as $c) {
                     $cityname = $c['city'];
                     $countryname = $c['country'];
-                    $combinedname = $cityname . ', ' . $countryname;
+                    $combinedname = $cityname . '^' . $countryname;
 
                     if ($cityname == 'Melbourne') {
                         echo '<option value=' . $combinedname . ' selected>Melbourne, Australia</option>'; 

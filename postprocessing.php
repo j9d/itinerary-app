@@ -15,7 +15,8 @@ if (!$itineraries) {
 }
 $numlocations = $_POST['numlocations'];
 
-$origin = explode(', ', $_POST['origin']);
+print_r($_POST);
+$origin = explode('^', $_POST['origin']);
 $itinerary = ['L' => [
     ['M' => [
         'city' => ['S' => $origin[0]],
@@ -25,7 +26,7 @@ $itinerary = ['L' => [
 ]];
 
 for ($i = 1; $i <= $numlocations; $i++) {
-    $locationname = explode(', ', $_POST['destination' . $i]);
+    $locationname = explode('^', $_POST['destination' . $i]);
     $itinerary_destination = ['M' => [
         'city' => ['S' => $locationname[0]],
         'country' => ['S' => $locationname[1]],
