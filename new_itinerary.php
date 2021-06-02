@@ -85,6 +85,11 @@ array_multisort(
                 for (let i = num + 1; i <= 20; ++i) {
                     var dateselector = document.getElementById('date' + i);
                     dateselector.min = new_min;
+                    var current_val = new Date(dateselector.value);
+                    var new_min_date = new Date(new_min);
+                    if (current_val < new_min_date) {
+                        dateselector.value = new_min;
+                    }
                 }
             }
         </script>
@@ -110,7 +115,7 @@ array_multisort(
             </select>
 
             <p>When are you leaving?</p>
-            <input type='date' id='origin-date' name='origin-date' value='<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?>>
+            <input type='date' id='date0' name='date0' value='<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinValue()'>
         
             <p>How many locations are you travelling to?</p>
             <input type='text' id='numlocations' name='numlocations' value=''/>
