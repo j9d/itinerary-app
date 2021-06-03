@@ -21,7 +21,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
         <div>
             <p><strong>Origin</strong></p>
             <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
-            <p><strong>Depart on </strong><?= (new DateTime($itinerary[0]['M']['date']))->format('jS F Y') ?></p>
+            <p><strong>Depart on </strong><?= (new DateTime($itinerary[0]['M']['date']['S']))->format('jS F Y') ?></p>
             <hr/>
         </div>
 
@@ -29,8 +29,8 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
         foreach ($itinerary as $index => $location) {
             if ($index > 0) {
                 $combinedname = $itinerary[$index]['M']['city']['S'] . ', ' . $itinerary[$index]['M']['country']['S'];
-                $arrdate = (new DateTime($itinerary[$index - 1]['M']['date']))->format('jS F Y');
-                $depdate = (new DateTime($itinerary[$index]['M']['date']))->format('jS F Y');
+                $arrdate = (new DateTime($itinerary[$index - 1]['M']['date']['S']))->format('jS F Y');
+                $depdate = (new DateTime($itinerary[$index]['M']['date']['S']))->format('jS F Y');
                 echo '<div>
                     <p><strong>Destination ' . $index . '</strong></p>
                     <p>' . $combinedname . '</p>
@@ -44,7 +44,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
 
         <p><strong>Return Destination</strong></p>
         <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
-        <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']))->format('jS F Y') ?></p>
+        <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']['S']))->format('jS F Y') ?></p>
         <hr/>
 
         <form action='user.php'><input type='submit' value='Back'></form>
