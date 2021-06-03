@@ -4,7 +4,6 @@ require_once 'tools.php';
 if (!isset($_SESSION['current_email'])) {
     redirect('login.php');
 }
-
 ?>
 
 <html>
@@ -17,7 +16,7 @@ if (!isset($_SESSION['current_email'])) {
         <p>Welcome, <?= $_SESSION['current_user'] ?>! (<a href='logout.php'>logout</a>)</p>
 
         <br>
-        <p>View your <a href='user.php'>past itineraries</a>.</p>
+        <p>View your <a href='user.php'>saved itineraries</a>.</p>
         <p>Create a <a href='new_itinerary.php'>new itinerary</a>.</p>
     </body>
 </html>
