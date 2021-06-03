@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Itinerary App - Home</title>
+    <title>Saved itineraries</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
@@ -122,7 +122,39 @@
     <div class="row section container-fluid" id="main-body">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            
+            <h2 id="page-title">Saved Itinerary</h2>
+            <hr>
+            <div class="container-fluid">
+                <p><strong>Origin</strong></p>
+                <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
+                <p><strong>Depart on </strong><?= (new DateTime($itinerary[0]['M']['date']['S']))->format('jS F Y') ?></p>
+                <hr>
+            </div>
+
+            <?php
+            foreach ($itinerary as $index => $location) {
+                if ($index > 0) {
+                    $combinedname = $itinerary[$index]['M']['city']['S'] . ', ' . $itinerary[$index]['M']['country']['S'];
+                    $arrdate = (new DateTime($itinerary[$index - 1]['M']['date']['S']))->format('jS F Y');
+                    $depdate = (new DateTime($itinerary[$index]['M']['date']['S']))->format('jS F Y');
+                    echo '<div>
+                        <p><strong>Destination ' . $index . '</strong></p>
+                        <p>' . $combinedname . '</p>
+                        <p><strong>Arrive on </strong>' . $arrdate . '</p>
+                        <p><strong>Depart on </strong>' . $depdate . '</p>
+                    </div>
+                    <hr/>';
+                }
+            }
+            ?>
+
+            <p><strong>Return Destination</strong></p>
+            <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
+            <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']['S']))->format('jS F Y') ?></p>
+            <hr>
+
+            <form action="user.php" method="POST"><input class="form-control" type="submit" value="Back"></form>
+            <form action="email.php" method="POST"><input class="form-control" type="submit" value="Email to me"></form>
         </div>
         <div class="col-lg-3"></div>
     </div>
