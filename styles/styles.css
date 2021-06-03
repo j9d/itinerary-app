@@ -44,3 +44,12 @@
     font-family: Garamond;
     font-size: 25px;
 }
+
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
