@@ -6,6 +6,7 @@ require_once 'tools.php';
     <head>
         <title>User Page</title>
     </head>
+    
     <body>
         <p>User page</p>
     </body>

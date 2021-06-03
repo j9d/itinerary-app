@@ -22,7 +22,7 @@ function register_user($email, $username, $password) {
     if ($statusCode == 409) {
         echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
     } else if ($statusCode == 201) {
-        echo 'Created<br>';
+        redirect('login.php');
     } else if ($statusCode == 400) {
         echo $message . '<br>';
     } else {
@@ -30,13 +30,13 @@ function register_user($email, $username, $password) {
     }
 
 }
-
 ?>
 
 <html>
     <head>
         <title>Register</title>
     </head>
+
     <body>
     <?php
         if (isset($_POST['submit'])) {

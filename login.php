@@ -28,6 +28,7 @@ function login($email, $password) {
     <head>
         <title>Login</title>
     </head>
+    
     <body>
         <?php
             if (isset($_POST['submit'])) {
