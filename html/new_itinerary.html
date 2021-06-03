@@ -123,6 +123,41 @@
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
             <h2 id="page-title">New Itinerary</h2>
+            <hr>
+            <form name="new_itinerary-form" action="postprocessing.php" method="POST">
+                <div class="form-group">
+                    <p>Where are you travelling from?</p>
+                    <select class="form-select" name="origin" id="origin">
+                        <!-- <?php 
+                        foreach ($cities_unmarshalled as $c) {
+                            $cityname = $c['city'];
+                            $countryname = $c['country'];
+                            $combinedname = $cityname . '^' . $countryname;
+
+                            if ($cityname == 'Melbourne') {
+                                echo '<option value="' . $combinedname . '" selected>Melbourne, Australia</option>'; 
+                            } else {
+                                echo '<option value="' . $combinedname . '">' . $cityname . ', ' . $countryname . '</option>';
+                            }
+                        }
+                        ?> -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>When are you leaving?</p>
+                    <input type="date" class="form-control" id="date0" name="date0" value="<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinDates(this)">
+                </div>
+                <div class="form-group">
+                    <p>How many locaton are you travelling to?</p>
+                    <input type="text" class="form-control" name="numlocations" value=""/>
+                    <a href="#" id="addfields" onclick="addFields()">Confirm</a>
+                    <div id="container"></div> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="form-control" value="Save" name="submit">
+                </div>
+            </form>
         </div>
         <div class="col-lg-3"></div>
     </div>
