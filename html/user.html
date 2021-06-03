@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Itinerary App - Home</title>
+    <title>User Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
@@ -47,6 +47,44 @@
                 </div>
             </nav>
         </div>
+    </div>
+
+    <div class="row section container-fluid" id="main-body">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h2 id="page-title">Your Saved itineraries</h2>
+            <hr>
+            <?php
+            if ($itineraries) {
+                echo '<table>
+                <tr>
+                    <th>Date</th>
+                    <th>Origin</th>
+                    <th>Number of Destinations</th>
+                    <th>View</th>
+                </tr>
+                ';
+                foreach ($itineraries as $index => $itin) {
+                    echo '<tr>
+                        <td>' . $itin['L'][0]['M']['date']['S'] . '</td>
+                        <td>' . $itin['L'][0]['M']['city']['S'] . '</td>
+                        <td>' . (count($itin['L']) - 1) . '</td>
+                        <td><form method="post" action="itinerary.php">
+                            <input type="hidden" name="index" value="' . $index . '">
+                            <input type="submit" name="submit" value="View">
+                        </form></td>
+                    </tr>';
+                }
+                echo '</table>';
+                
+            } else {
+                echo '<p>No itineraries to show.</p>';
+            }
+            ?>
+            <hr>
+            <p><a href="main.php">Back to the main page</a></p>
+        </div>
+        <div class="col-lg-3"></div>
     </div>
 </body>
 
