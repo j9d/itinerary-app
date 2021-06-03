@@ -31,10 +31,10 @@ require_once 'tools.php';
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link" id="lr-btn" href="login.html">Login</a>
+                            <a class="nav-link" id="lr-btn" href="login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="lr-btn" href="#">Register</a>
+                            <a class="nav-link" id="lr-btn" href="register.php">Register</a>
                         </li>
                     </ul>
                 </div>

@@ -56,7 +56,7 @@ function login($email, $password)
                             <a class="nav-link" id="lr-btn" href="login.php">Login<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="lr-btn" href="#">Register</a>
+                            <a class="nav-link" id="lr-btn" href="register.php">Register</a>
                         </li>
                     </ul>
                 </div>
