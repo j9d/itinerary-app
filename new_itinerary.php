@@ -168,11 +168,11 @@ array_multisort(
                 </div>
                 <div class="form-group">
                     <p>When are you leaving?</p>
-                    <input type="date" class="form-control" id="date0" name="date0" value="<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinDates(this)">
+                    <input type="date" class="form-control" id="date0" name="date0" value="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d') ?>" onchange="updateMinDates(this)">
                 </div>
                 <div class="form-group">
                     <p>How many locaton are you travelling to?</p>
-                    <input type="text" class="form-control" name="numlocations" value=""/>
+                    <input type="text" class="form-control" name="numlocations">
                     <a href="#" id="addfields" onclick="addFields()">Confirm</a>
                     <div id="container"></div> 
                 </div>
