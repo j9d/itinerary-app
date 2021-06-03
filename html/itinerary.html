@@ -6,76 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <script rel="scripts" type="text/javascript">
-        // Function for adding destination selection fields to the form
-        function addFields() {
-            // Number of destinations to create
-            let number = document.getElementById('numlocations').value;
-
-            if (number > 20) {
-                alert('Too many destinations. Please choose 20 or less.');
-
-            } else {
-                // Container <div> where the location selections will be displayed
-                let container = document.getElementById('container');
-
-                // Clear previous contents of the container - allows changing of the number of destinations
-                while (container.hasChildNodes()) {
-                    container.removeChild(container.lastChild);
-                }
-                for (let i = 1; i <= number; i++) {
-                    container.appendChild(document.createElement('hr'));
-
-                    // Clone the selector for the origin location
-                    let clone = document.querySelector('#origin').cloneNode(true);
-                    clone.id = 'destination' + i;
-                    clone.name = 'destination' + i;
-
-                    container.appendChild(document.createTextNode('Destination ' + i));
-                    container.appendChild(document.createElement('br'));
-                    // Add the cloned element to the container
-                    container.appendChild(clone);
-                    container.appendChild(document.createElement('br'));
-
-                    // Create a date selector for each destination
-                    let date = document.createElement('input');
-                    date.type = 'date';
-                    date.id = 'date' + i;
-                    date.name = 'date' + i;
-                    date.value = '<?= date('Y - m - d') ?>';
-                    date.min = '<?= date('Y - m - d') ?>';
-                    date.onchange = updateMinDatesWrapper;
-
-                    // Add date selector
-                    container.appendChild(document.createTextNode('Date of departure from this destination:'));
-                    container.appendChild(document.createElement('br'));
-                    container.appendChild(date);
-
-                    container.appendChild(document.createElement('br'));
-                }
-            }
-        }
-
-        function updateMinDatesWrapper(event) {
-            updateMinDates(event.target);
-        }
-
-        function updateMinDates(item) {
-            id = item.id;
-            let num = parseInt(id.replace('date', ''), 10);
-            let new_min = document.getElementById('date' + num).value;
-
-            for (let i = num + 1; i <= 20; i++) {
-                let dateselector = document.getElementById('date' + i);
-                dateselector.min = new_min;
-                let current_val = new Date(dateselector.value);
-                let new_min_date = new Date(new_min);
-                if (current_val < new_min_date) {
-                    dateselector.value = new_min;
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -111,7 +41,7 @@
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
                         <li class="nav-item">
-                            <p>username and logout go here</p>
+                            <p>Welcome, <?= $_SESSION['current_user'] ?>! (<a href='logout.php'>logout</a>)</p>
                         </li>
                     </ul>
                 </div>
