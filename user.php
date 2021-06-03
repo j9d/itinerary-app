@@ -12,9 +12,7 @@ if ($user['Item']['itineraries'] != null) {
     $itineraries = null;
 }
 
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

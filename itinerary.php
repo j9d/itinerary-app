@@ -8,9 +8,7 @@ if (!isset($_POST['submit'])) {
 $index = intval($_POST['index']);
 $user = query_login_table($_SESSION['current_email']);
 $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

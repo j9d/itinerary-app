@@ -21,12 +21,8 @@ function login($email, $password)
         echo '<p>Email or password is invalid</p></br>';
     }
 }
-?>
-
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Login</title>
     <meta charset="utf-8">

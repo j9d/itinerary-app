@@ -30,9 +30,7 @@ function register_user($email, $username, $password)
         echo 'Uncaught error<br>';
     }
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

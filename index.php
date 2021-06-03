@@ -1,8 +1,6 @@
 <?php
 require_once 'tools.php';
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

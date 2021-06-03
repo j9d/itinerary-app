@@ -21,9 +21,7 @@ array_multisort(
     $city_col, SORT_ASC,
     $cities_unmarshalled
 );
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

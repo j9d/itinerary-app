@@ -4,9 +4,7 @@ require_once 'tools.php';
 if (!isset($_SESSION['current_email'])) {
     redirect('login.php');
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
