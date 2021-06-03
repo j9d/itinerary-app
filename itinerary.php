@@ -48,6 +48,6 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
         <hr/>
 
         <form action='user.php'><input type='submit' value='Back'></form>
-        <form action='email.php'><input type='hidden' name='index' value='<?= intval($_POST['index']) ?>'><input type='submit' name='submit' value='Email to me'></form>
+        <form action='email.php' method='post'><input type='hidden' name='index' value='<?= intval($_POST['index']) ?>'><input type='submit' name='submit' value='Email to me'></form>
     </body>
 </html>
