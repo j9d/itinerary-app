@@ -1,7 +1,8 @@
 <?php
 require_once 'tools.php';
 
-function register_user($email, $username, $password) {
+function register_user($email, $username, $password)
+{
     global $lambda_client;
 
     $body = [
@@ -28,36 +29,86 @@ function register_user($email, $username, $password) {
     } else {
         echo 'Uncaught error<br>';
     }
-
 }
 ?>
 
-<html>
-    <head>
-        <title>Register</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
+<head>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid" id="main-title">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 text-center">
+            <h1 id="title">Itinerary App</h1>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+    <div class="row section container-fluid" id="navigation-bar">
+        <div class="col-lg-9"></div>
+        <div class="col-lg-3">
+            <nav class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <ul class="nav navbar-nav mr-auto justify-content-end">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="lr-btn" href="login.php">Login<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="lr-btn" href="#">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
     <?php
-        if (isset($_POST['submit'])) {
-            register_user($_POST['email'], $_POST['username'], $_POST['password']);
-        }
+    if (isset($_POST['submit'])) {
+        register_user($_POST['email'], $_POST['username'], $_POST['password']);
+    }
     ?>
-    <form name="register-form" method="post" action="register.php">
-        <h3>Email</h3>
-        <input type="email" name="email">
-        <br/>
+    <div class="row section container-fluid" id="main-body">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form name="register-form" method="POST" action="register.php">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <input class="btn btn-primary" type="submit" values="Register">
+                <p><a href="login.php">Already registered? Log in here</a></p>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</body>
 
-        <h3>Username</h3>
-        <input type="text" name="username">
-        <br/>
+<footer class="container-fluid" id="footer">
+    <div>
+        <p>COSC2626 Cloud Computing - Assessment 3</p>
+        <p><span>&#169;</span>James Dimos (s3722398)<br>
+            <span>&#169;</span>Louis Manabat (s3719633)
+        </p>
+    </div>
+</footer>
 
-        <h3>Password</h3>
-        <input type="password" name="password">
-        <br/>
-
-        <input type="submit" value="Register" name="submit">
-        <p><a href="login.php">Already registered? Log in here.</a></p>
-    </form>
-    </body>
 </html>
