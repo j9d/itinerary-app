@@ -76,7 +76,7 @@ function login($email, $password)
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" required>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Login">
+                <input class="btn btn-primary" type="submit" name="submit" value="Login">
                 <p><a href="register.php">Register here!</a></p>
             </form>
         </div>

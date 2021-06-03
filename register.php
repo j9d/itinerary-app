@@ -90,7 +90,7 @@ function register_user($email, $username, $password)
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" required>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Register">
+                <input class="btn btn-primary" type="submit" name="submit" value="Register">
                 <p><a href="login.php">Already registered? Log in here</a></p>
             </form>
         </div>

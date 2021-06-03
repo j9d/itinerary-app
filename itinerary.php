@@ -93,8 +93,8 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
             <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']['S']))->format('jS F Y') ?></p>
             <hr>
 
-            <form action="user.php" method="POST"><input class="form-control" type="submit" value="Back"></form>
-            <form action="email.php" method="POST"><input class="form-control" type="submit" value="Email to me"></form>
+            <form action="user.php" method="POST"><input class="form-control" type="submit" name="submit" value="Back"></form>
+            <form action="email.php" method="POST"><input class="form-control" type="submit" name="submit" value="Email to me"></form>
         </div>
         <div class="col-lg-3"></div>
     </div>
