@@ -1,6 +1,10 @@
 <?php
 require_once 'tools.php';
 
+if (isset($_POST['submit'])) {
+    login($_POST['email'], $_POST['password']);
+}
+
 function login($email, $password)
 {
     $result = query_login_table($email);
@@ -60,11 +64,6 @@ function login($email, $password)
         </div>
     </div>
 
-    <?php
-    if (isset($_POST['submit'])) {
-        login($_POST['email'], $_POST['password']);
-    }
-    ?>
     <div class="row section container-fluid" id="main-body">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">

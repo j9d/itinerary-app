@@ -1,6 +1,10 @@
 <?php
 require_once 'tools.php';
 
+if (isset($_POST['submit'])) {
+    register_user($_POST['email'], $_POST['username'], $_POST['password']);
+}
+
 function register_user($email, $username, $password)
 {
     global $lambda_client;
@@ -62,7 +66,7 @@ function register_user($email, $username, $password)
                             <a class="nav-link" id="lr-btn" href="login.php">Login<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="lr-btn" href="#">Register</a>
+                            <a class="nav-link" id="lr-btn" href="register.php">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -70,12 +74,6 @@ function register_user($email, $username, $password)
         </div>
     </div>
 
-
-    <?php
-    if (isset($_POST['submit'])) {
-        register_user($_POST['email'], $_POST['username'], $_POST['password']);
-    }
-    ?>
     <div class="row section container-fluid" id="main-body">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
