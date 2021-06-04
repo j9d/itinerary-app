@@ -172,7 +172,7 @@ array_multisort(
                 </div>
                 <div class="form-group">
                     <p>How many locaton are you travelling to?</p>
-                    <input type="text" class="form-control" name="numlocations">
+                    <input type="text" class="form-control" name="numlocations" id="numlocations">
                     <a href="#" id="addfields" onclick="addFields()">Confirm</a>
                     <div id="container"></div> 
                 </div>
