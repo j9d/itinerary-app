@@ -99,6 +99,7 @@ if ($user['Item']['itineraries'] != null) {
         </div>
         <div class="col-lg-3"></div>
     </div>
+    <br/><br/><br/><br/>
 </body>
 
 <footer class="container-fluid" id="footer">

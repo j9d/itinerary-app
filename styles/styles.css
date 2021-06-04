@@ -11,16 +11,16 @@
 #title {
     color: white;
     font-size: 40px;
-    font-family: "Comic Sans MS";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #page-title {
-    font-family: Garamond;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #lr-btn {
     color: white;
-    font-family: Garamond;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: large;
     font-size: 25px;
 }
@@ -41,7 +41,7 @@
 
 #nav-links {
     color: white;
-    font-family: Garamond;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
 }
 

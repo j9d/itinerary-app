@@ -98,6 +98,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
         </div>
         <div class="col-lg-3"></div>
     </div>
+    <br/><br/><br/><br/>
 </body>
 
 <footer class="container-fluid" id="footer">

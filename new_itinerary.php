@@ -171,7 +171,7 @@ array_multisort(
                     <input type="date" class="form-control" id="date0" name="date0" value="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d') ?>" onchange="updateMinDates(this)">
                 </div>
                 <div class="form-group">
-                    <p>How many locaton are you travelling to?</p>
+                    <p>How many destinations are you travelling to?</p>
                     <input type="text" class="form-control" name="numlocations" id="numlocations">
                     <a href="#" id="addfields" onclick="addFields()">Confirm</a>
                     <div id="container"></div> 
@@ -184,6 +184,7 @@ array_multisort(
         </div>
         <div class="col-lg-3"></div>
     </div>
+    <br/><br/><br/><br/>
 </body>
 
 <footer class="container-fluid" id="footer">
