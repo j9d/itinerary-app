@@ -66,7 +66,7 @@ if (array_key_exists('itineraries', $user['Item']) && $user['Item']['itineraries
     <div class="row section container-fluid" id="main-body">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <h2 id="page-title">Your Saved itineraries</h2>
+            <h2 id="page-title">Your Saved Itineraries</h2>
             <hr>
             <?php
             if ($itineraries) {
