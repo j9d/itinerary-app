@@ -44,3 +44,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
 }
+
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}

@@ -19,16 +19,6 @@ if ($user['Item']['itineraries'] != null) {
     <title>User Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        table, th, td {
-            border: 1px solid grey;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 5px;
-        }
-    </style>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,18 +72,18 @@ if ($user['Item']['itineraries'] != null) {
             if ($itineraries) {
                 echo '<table>
                 <tr>
-                    <th>Date</th>
-                    <th>Origin</th>
-                    <th>Number of Destinations</th>
-                    <th>View</th>
+                    <th style="padding: 5px">Date</th>
+                    <th style="padding: 5px">Origin</th>
+                    <th style="padding: 5px">Number of Destinations</th>
+                    <th style="padding: 5px">View</th>
                 </tr>
                 ';
                 foreach ($itineraries as $index => $itin) {
                     echo '<tr>
-                        <td>' . $itin['L'][0]['M']['date']['S'] . '</td>
-                        <td>' . $itin['L'][0]['M']['city']['S'] . '</td>
-                        <td>' . (count($itin['L']) - 1) . '</td>
-                        <td><form method="post" action="itinerary.php">
+                        <td style="padding: 5px">' . $itin['L'][0]['M']['date']['S'] . '</td>
+                        <td style="padding: 5px">' . $itin['L'][0]['M']['city']['S'] . '</td>
+                        <td style="padding: 5px">' . (count($itin['L']) - 1) . '</td>
+                        <td style="padding: 5px"><form method="post" action="itinerary.php">
                             <input type="hidden" name="index" value="' . $index . '">
                             <input type="submit" name="submit" value="View">
                         </form></td>
