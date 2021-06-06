@@ -87,7 +87,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
                 }
             }
             ?>
-
+          
             <div class="container-fluid">
                 <p><strong>Return Destination</strong></p>
                 <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
@@ -96,7 +96,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
             </div>
 
             <form action="user.php" method="POST"><input class="form-control" type="submit" name="submit" value="Back"></form>
-            <form action="email.php" method="POST"><input class="form-control" type="submit" name="submit" value="Email to me"></form>
+            <form action="email.php" method="POST"><input type='hidden' name='index' value='<?= intval($_POST['index']) ?>'><input class="form-control" type="submit" name="submit" value="Email to me"></form>
         </div>
         <div class="col-lg-3"></div>
     </div>

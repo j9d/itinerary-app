@@ -15,6 +15,9 @@ $sdk = new Sdk([
 $lambda_client = $sdk->createLambda();
 $db_client = $sdk->createDynamoDb();
 $s3_client = $sdk->createS3();
+$email_client = $sdk->createSes();
+
+$sender_address = 'itinerary.app.cc@gmail.com';
 
 function redirect($page) {
     echo "<script> location.href=\"" . $page . "\" </script>";
