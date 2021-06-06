@@ -57,5 +57,4 @@ try {
 } catch (DynamoDbException $e) {
     echo 'Error: ' . $e->getMessage() . '<br/>';
 }
-
 ?>

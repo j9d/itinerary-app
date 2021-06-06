@@ -49,5 +49,4 @@ function get_all_locations() {
 
     return $cities;
 }
-
 ?>

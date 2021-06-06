@@ -1,6 +1,10 @@
 <?php
 require_once 'tools.php';
 
+if (!isset($_SESSION['current_email'])) {
+    redirect('login.php');
+}
+
 // Retrieve all cities from DynamoDB
 $cities = get_all_locations();
 
@@ -21,14 +25,17 @@ array_multisort(
     $city_col, SORT_ASC,
     $cities_unmarshalled
 );
-?>
+?><!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <head>
-        <title>Create New Itinerary</title>
-        <script type='text/javascript'>
-            // Function for adding destination selection fields to the form
-            function addFields() {
+<head>
+    <title>Create New Itinerary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script rel="scripts" type="text/javascript">
+        // Function for adding destination selection fields to the form
+        function addFields() {
                 // Number of destinations to create
                 let number = document.getElementById('numlocations').value;
 
@@ -95,41 +102,102 @@ array_multisort(
                     }
                 }
             }
-        </script>
-    </head>
-    
-    <body>
-        <h1>New Itinerary</h1>
-        <hr/>
-        <form action='postprocessing.php' method='post'>
-            <p>Where are you travelling from?</p>
-            <select name='origin' id='origin'>
-                <?php 
-                foreach ($cities_unmarshalled as $c) {
-                    $cityname = $c['city'];
-                    $countryname = $c['country'];
-                    $combinedname = $cityname . '^' . $countryname;
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-                    if ($cityname == 'Melbourne') {
-                        echo '<option value="' . $combinedname . '" selected>Melbourne, Australia</option>'; 
-                    } else {
-                        echo '<option value="' . $combinedname . '">' . $cityname . ', ' . $countryname . '</option>';
-                    }
-                }
-                ?>
-            </select>
+<body>
+    <div class="container-fluid" id="main-title">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 text-center">
+            <h1 id="title">Itinerary App</h1>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
 
-            <p>When are you leaving?</p>
-            <input type='date' id='date0' name='date0' value='<?= date('Y-m-d') ?>' min=<?= date('Y-m-d') ?> onchange='updateMinDates(this)'>
-        
-            <p>How many locations are you travelling to?</p>
-            <input type='text' id='numlocations' name='numlocations' value=''/>
-            <a href='#' id='addfields' onclick='addFields()'>Confirm</a>
-            <div id='container'></div>
+    <div class="row section container-fluid" id="navigation-bar">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <nav class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <ul class="nav navbar-nav mr-auto justify-content-end">
+                        <li class="nav-item">
+                            <a href='new_itinerary.php' id="nav-links">New itinerary</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='user.php' id="nav-links">Past itineraries</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-3">
+            <nav class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <ul class="nav navbar-nav mr-auto justify-content-end">
+                        <li class="nav-item">
+                            <p>Welcome, <?= $_SESSION['current_user'] ?>! (<a href='logout.php'>logout</a>)</p>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
 
-            <br/>
-            <input type='submit' value='Save' name='submit'>
-        </form>
-        
-    </body>
+    <div class="row section container-fluid" id="main-body">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h2 id="page-title">New Itinerary</h2>
+            <hr>
+            <form name="new_itinerary-form" action="postprocessing.php" method="POST">
+                <div class="form-group">
+                    <p>Where are you travelling from?</p>
+                    <select class="form-select" name="origin" id="origin">
+                        <?php 
+                        foreach ($cities_unmarshalled as $c) {
+                            $cityname = $c['city'];
+                            $countryname = $c['country'];
+                            $combinedname = $cityname . '^' . $countryname;
+
+                            if ($cityname == 'Melbourne') {
+                                echo '<option value="' . $combinedname . '" selected>Melbourne, Australia</option>'; 
+                            } else {
+                                echo '<option value="' . $combinedname . '">' . $cityname . ', ' . $countryname . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>When are you leaving?</p>
+                    <input type="date" class="form-control" id="date0" name="date0" value="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d') ?>" onchange="updateMinDates(this)">
+                </div>
+                <div class="form-group">
+                    <p>How many destinations are you travelling to?</p>
+                    <input type="text" class="form-control" name="numlocations" id="numlocations">
+                    <a href="#" id="addfields" onclick="addFields()">Confirm</a>
+                    <div id="container"></div> 
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="form-control" value="Save" name="submit">
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <br/><br/><br/><br/>
+</body>
+
+<footer class="container-fluid" id="footer">
+    <div>
+        <p>COSC2626 Cloud Computing - Assessment 3</p>
+        <p><span>&#169;</span>James Dimos (s3722398)<br>
+            <span>&#169;</span>Louis Manabat (s3719633)
+        </p>
+    </div>
+</footer>
+
 </html>
