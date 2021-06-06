@@ -1,8 +1,8 @@
 <?php
 require_once 'tools.php';
 
-if (!isset($_POST['submit'])) {
-    redirect('main.php');
+if (!isset($_SESSION['current_email'])) {
+    redirect('login.php');
 }
 
 // Retrieve all cities from DynamoDB

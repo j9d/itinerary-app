@@ -6,7 +6,7 @@ if (!isset($_SESSION['current_email'])) {
 }
 
 $user = query_login_table($_SESSION['current_email']);
-if ($user['Item']['itineraries'] != null) {
+if (array_key_exists('itineraries', $user['Item']) && $user['Item']['itineraries'] != null) {
     $itineraries = $user['Item']['itineraries']['L'];
 } else {
     $itineraries = null;
