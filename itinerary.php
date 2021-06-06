@@ -77,7 +77,7 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
                     $combinedname = $itinerary[$index]['M']['city']['S'] . ', ' . $itinerary[$index]['M']['country']['S'];
                     $arrdate = (new DateTime($itinerary[$index - 1]['M']['date']['S']))->format('jS F Y');
                     $depdate = (new DateTime($itinerary[$index]['M']['date']['S']))->format('jS F Y');
-                    echo '<div>
+                    echo '<div class="container-fluid">
                         <p><strong>Destination ' . $index . '</strong></p>
                         <p>' . $combinedname . '</p>
                         <p><strong>Arrive on </strong>' . $arrdate . '</p>
@@ -88,17 +88,19 @@ $itinerary = $user['Item']['itineraries']['L'][$index]['L'];
             }
             ?>
 
-            <p><strong>Return Destination</strong></p>
-            <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
-            <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']['S']))->format('jS F Y') ?></p>
-            <hr>
+            <div class="container-fluid">
+                <p><strong>Return Destination</strong></p>
+                <p><?= $itinerary[0]['M']['city']['S'] . ', ' . $itinerary[0]['M']['country']['S'] ?></p>
+                <p><strong>Arrive on </strong><?= (new DateTime($itinerary[count($itinerary) - 1]['M']['date']['S']))->format('jS F Y') ?></p>
+                <hr>
+            </div>
 
             <form action="user.php" method="POST"><input class="form-control" type="submit" name="submit" value="Back"></form>
             <form action="email.php" method="POST"><input class="form-control" type="submit" name="submit" value="Email to me"></form>
         </div>
         <div class="col-lg-3"></div>
     </div>
-    <br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 </body>
 
 <footer class="container-fluid" id="footer">
