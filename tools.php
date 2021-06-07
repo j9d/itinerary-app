@@ -14,7 +14,6 @@ $sdk = new Sdk([
 
 $lambda_client = $sdk->createLambda();
 $db_client = $sdk->createDynamoDb();
-$s3_client = $sdk->createS3();
 $email_client = $sdk->createSes();
 
 $s3_base_url = 'https://itinerary-bucket.s3-ap-southeast-2.amazonaws.com/';
