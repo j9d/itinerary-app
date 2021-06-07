@@ -29,7 +29,7 @@ if (array_key_exists('itineraries', $user['Item']) && $user['Item']['itineraries
     <div class="container-fluid" id="main-title">
         <div class="col-lg-3"></div>
         <div class="col-lg-6 text-center">
-            <h1 id="title">Itinerary App</h1>
+            <img src="<?= $s3_base_url . 'logo.png' ?>" height="85px">
         </div>
         <div class="col-lg-3"></div>
     </div>
