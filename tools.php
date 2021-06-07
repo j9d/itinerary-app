@@ -17,6 +17,7 @@ $db_client = $sdk->createDynamoDb();
 $s3_client = $sdk->createS3();
 $email_client = $sdk->createSes();
 
+$s3_base_url = 's3://itinerary-bucket/';
 $sender_address = 'itinerary.app.cc@gmail.com';
 
 function redirect($page) {
