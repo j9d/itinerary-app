@@ -71,23 +71,9 @@ try {
         ]
     ]);
     $messageId = $result['MessageId'];
-    echo '
-    <html>
-        <head><title>Email success</title></head>
-        <body>
-            <p>Itinerary sent!</p>
-            <p>(<a href="main.php">back to the main page</a>)</p>
-        </body>
-    </html>';
+    include 'email_success.php';
 
 } catch (AwsException $e) {
-    echo '
-    <html>
-        <head><title>Email failure</title></head>
-        <body>
-            <p>Looks like your email address isn\'t verified, so we can\'t send you your itinerary. Try using a verified email.</p>
-            <p>(<a href="main.php">back to the main page</a>)</p>
-        </body>
-    </html>';
+    include 'email_fail.php';
 }
 ?>
