@@ -27,11 +27,8 @@ function register_user($email, $username, $password)
     $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
 
-    $message = $result['body'];
-    $code = $result['statusCode'];
     echo 'Code: ' . $statusCode . '<br>';
-    echo 'Code2: ' . $code . '<br>';
-    echo 'Message: ' . $message . '<br>';
+    echo 'Message: ' . $result . '<br>';
 
     if ($statusCode == 409) {
         echo 'Email already exists.</br>';
@@ -39,7 +36,7 @@ function register_user($email, $username, $password)
         echo 'Success';
         // redirect('login.php');
     } else {
-        echo 'Uncaught error: ' . $message . '<br>';
+        echo 'Uncaught error: ' . $result . '<br>';
     }
 }
 ?><!DOCTYPE html>
