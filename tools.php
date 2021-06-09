@@ -12,10 +12,10 @@ $sdk = new Sdk([
     'region' => 'ap-southeast-2'
 ]);
 
-$lambda_client = $sdk->createLambda();
 $db_client = $sdk->createDynamoDb();
 $email_client = $sdk->createSes();
 
+$register_url = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
 $s3_base_url = 'https://itinerary-bucket.s3-ap-southeast-2.amazonaws.com/';
 $sender_address = 'itinerary.app.cc@gmail.com';
 

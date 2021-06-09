@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
 
 function register_user($email, $username, $password)
 {
-    // global $lambda_client;
+    global $register_url;
 
     $body = [
         'email' => $email,
@@ -16,25 +16,18 @@ function register_user($email, $username, $password)
     ];
     $body_json = json_encode($body);
 
-    $url = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
-
-    $curl = curl_init($url);
+    $curl = curl_init($register_url);
     curl_setopt($curl, CURLOPT_POST, true);
-    // curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     curl_setopt($curl, CURLOPT_POSTFIELDS, $body_json);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($curl);
     $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
 
-    echo 'Code: ' . $statusCode . '<br>';
-    echo 'Message: ' . $result . '<br>';
-
-    if ($statusCode == 409) {
-        echo 'Email already exists.</br>';
+    if ($statusCode == 409 || $statusCode == 400) {
+        echo $result . '<br>';
     } else if ($statusCode == 201) {
-        echo 'Success';
-        // redirect('login.php');
+        redirect('login.php');
     } else {
         echo 'Uncaught error: ' . $result . '<br>';
     }
