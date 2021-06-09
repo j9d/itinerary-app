@@ -16,11 +16,17 @@ function register_user($email, $username, $password)
     ];
 
     $url = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
+    $headers = [
+        'Content-Type: application/json',
+        'Connection: keep-alive'
+    ];
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    
     $result = curl_exec($curl);
     curl_close($curl);
 
