@@ -23,7 +23,7 @@ echo '<!DOCTYPE html>
 
 <div class="row section container-fluid" id="navigation-bar">
     <div class="col-lg-1"></div>
-    <div class="col-lg-8">
+    <div class="col-lg-6">
         <nav class="collapse navbar-collapse">
             <div class="navbar-nav">
                 <ul class="nav navbar-nav mr-auto justify-content-end">
@@ -37,7 +37,7 @@ echo '<!DOCTYPE html>
             </div>
         </nav>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-5">
         <nav class="collapse navbar-collapse">
             <div class="navbar-nav">
                 <ul class="nav navbar-nav mr-auto justify-content-end">
