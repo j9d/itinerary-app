@@ -42,7 +42,7 @@ echo '<!DOCTYPE html>
             <div class="navbar-nav">
                 <ul class="nav navbar-nav mr-auto justify-content-end">
                     <li class="nav-item">
-                        <p>Welcome, ' . $_SESSION["current_user"] . ' ?>! (<a href="logout.php">logout</a>)</p>
+                        <p>Welcome, ' . $_SESSION["current_user"] . '! (<a href="logout.php">logout</a>)</p>
                     </li>
                 </ul>
             </div>
