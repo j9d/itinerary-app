@@ -27,8 +27,10 @@ function register_user($email, $username, $password)
     $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
 
-    $message = $result['message'];
+    $message = $result['body'];
+    $code = $result['statusCode'];
     echo 'Code: ' . $statusCode . '<br>';
+    echo 'Code2: ' . $code . '<br>';
     echo 'Message: ' . $message . '<br>';
 
     if ($statusCode == 409) {
