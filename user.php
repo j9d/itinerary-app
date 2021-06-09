@@ -36,7 +36,7 @@ if (array_key_exists('itineraries', $user['Item']) && $user['Item']['itineraries
 
     <div class="row section container-fluid" id="navigation-bar">
         <div class="col-lg-1"></div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <nav class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
@@ -50,7 +50,7 @@ if (array_key_exists('itineraries', $user['Item']) && $user['Item']['itineraries
                 </div>
             </nav>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <nav class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">

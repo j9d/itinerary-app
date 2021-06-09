@@ -28,7 +28,7 @@ if (!isset($_SESSION['current_email'])) {
 
     <div class="row section container-fluid" id="navigation-bar">
         <div class="col-lg-1"></div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <nav class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['current_email'])) {
                 </div>
             </nav>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <nav class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
