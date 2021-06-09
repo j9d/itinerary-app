@@ -1,6 +1,4 @@
 <?php
-require 'tools.php';
-
 echo '<!DOCTYPE html>
 <html lang="en">
 
