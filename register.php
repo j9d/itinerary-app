@@ -7,31 +7,29 @@ if (isset($_POST['submit'])) {
 
 function register_user($email, $username, $password)
 {
-    global $lambda_client;
+    global $register_url;
 
     $body = [
         'email' => $email,
         'username' => $username,
         'password' => $password
     ];
+    $body_json = json_encode($body);
 
-    $result = $lambda_client->invoke([
-        'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
-        'Payload' => json_encode($body)
-    ]);
+    $curl = curl_init($register_url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $body_json);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($curl);
+    $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
 
-    $result_arr = json_decode($result['Payload']->__toString(), true);
-    $statusCode = $result_arr['statusCode'];
-    $message = $result_arr['body'];
-
-    if ($statusCode == 409) {
-        echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
+    if ($statusCode == 409 || $statusCode == 400) {
+        echo $result . '<br>';
     } else if ($statusCode == 201) {
         redirect('login.php');
-    } else if ($statusCode == 400) {
-        echo $message . '<br>';
     } else {
-        echo 'Uncaught error<br>';
+        echo 'Uncaught error: ' . $result . '<br>';
     }
 }
 ?><!DOCTYPE html>
