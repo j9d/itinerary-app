@@ -138,7 +138,7 @@ array_multisort(
                 <div class="navbar-nav">
                     <ul class="nav navbar-nav mr-auto justify-content-end">
                         <li class="nav-item">
-                            <p id="nav-links">Welcome, <?= $_SESSION['current_user'] ?>! <a href='logout.php' id="nav-links">logout</a></p>
+                            <p id="nav-links">Welcome, <?= $_SESSION['current_user'] ?>! (<a href='logout.php' id="logout">logout</a>)</p>
                         </li>
                     </ul>
                 </div>
