@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
 
 function register_user($email, $username, $password)
 {
-    global $lambda_client;
+    // global $lambda_client;
 
     $body = [
         'email' => $email,
@@ -15,24 +15,41 @@ function register_user($email, $username, $password)
         'password' => $password
     ];
 
-    $result = $lambda_client->invoke([
-        'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
-        'Payload' => json_encode($body)
-    ]);
+    $url = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
 
-    $result_arr = json_decode($result['Payload']->__toString(), true);
-    $statusCode = $result_arr['statusCode'];
-    $message = $result_arr['body'];
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($curl);
+    curl_close($curl);
 
-    if ($statusCode == 409) {
-        echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
-    } else if ($statusCode == 201) {
-        redirect('login.php');
-    } else if ($statusCode == 400) {
-        echo $message . '<br>';
-    } else {
-        echo 'Uncaught error<br>';
-    }
+    print_r($result);
+
+    // $result = $lambda_client->invoke([
+    //     'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
+    //     'Payload' => json_encode($body)
+    // ]);
+
+
+
+    // $result_arr = json_decode($result['Payload']->__toString(), true);
+    // $statusCode = $result_arr['statusCode'];
+    // $message = $result_arr['body'];
+
+    
+
+    // if ($statusCode == 409) {
+    //     echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
+    // } else if ($statusCode == 201) {
+    //     redirect('login.php');
+    // } else if ($statusCode == 400) {
+    //     echo $message . '<br>';
+    // } else {
+    //     echo $message;
+    //     echo $statusCode;
+    //     print_r($result_arr);
+    // }
 }
 ?><!DOCTYPE html>
 <html lang="en">
