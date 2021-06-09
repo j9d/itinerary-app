@@ -17,47 +17,28 @@ function register_user($email, $username, $password)
     $body_json = json_encode($body);
 
     $url = 'https://v7w8n4n2ja.execute-api.ap-southeast-2.amazonaws.com/default/register-user';
-    // $headers = [
-    //     'Content-Type: application/json',
-    //     'Connection: keep-alive'
-    // ];
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_POST, true);
     // curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     curl_setopt($curl, CURLOPT_POSTFIELDS, $body_json);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    // curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    
     $result = curl_exec($curl);
+    $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
 
-    print_r($result);
+    $message = $result['message'];
+    echo 'Code: ' . $statusCode . '<br>';
+    echo 'Message: ' . $message . '<br>';
 
-    // $result = $lambda_client->invoke([
-    //     'FunctionName' => 'arn:aws:lambda:ap-southeast-2:299197477071:function:register-user',
-    //     'Payload' => json_encode($body)
-    // ]);
-
-
-
-    // $result_arr = json_decode($result['Payload']->__toString(), true);
-    // $statusCode = $result_arr['statusCode'];
-    // $message = $result_arr['body'];
-
-    
-
-    // if ($statusCode == 409) {
-    //     echo 'Email already exists: ' . $result_arr['conflictingEmail'] . '</br>';
-    // } else if ($statusCode == 201) {
-    //     redirect('login.php');
-    // } else if ($statusCode == 400) {
-    //     echo $message . '<br>';
-    // } else {
-    //     echo $message;
-    //     echo $statusCode;
-    //     print_r($result_arr);
-    // }
+    if ($statusCode == 409) {
+        echo 'Email already exists.</br>';
+    } else if ($statusCode == 201) {
+        echo 'Success';
+        // redirect('login.php');
+    } else {
+        echo 'Uncaught error: ' . $message . '<br>';
+    }
 }
 ?><!DOCTYPE html>
 <html lang="en">
