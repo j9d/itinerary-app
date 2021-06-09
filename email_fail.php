@@ -1,4 +1,6 @@
 <?php
+require 'tools.php';
+
 echo '<!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +18,7 @@ echo '<!DOCTYPE html>
 <div class="container-fluid" id="main-title">
     <div class="col-lg-3"></div>
     <div class="col-lg-6 text-center">
-        <img src="<?= $s3_base_url . logo.png ?>" height="85px">
+        <img src="' . $s3_base_url . "logo.png" . '" height="85px">
     </div>
     <div class="col-lg-3"></div>
 </div>
@@ -42,7 +44,7 @@ echo '<!DOCTYPE html>
             <div class="navbar-nav">
                 <ul class="nav navbar-nav mr-auto justify-content-end">
                     <li class="nav-item">
-                        <p>Welcome, <?= $_SESSION["current_user"] ?>! (<a href="logout.php">logout</a>)</p>
+                        <p>Welcome, ' . $_SESSION["current_user"] . ' ?>! (<a href="logout.php">logout</a>)</p>
                     </li>
                 </ul>
             </div>
